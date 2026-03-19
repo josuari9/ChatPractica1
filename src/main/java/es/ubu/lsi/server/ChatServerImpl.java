@@ -29,6 +29,7 @@ public class ChatServerImpl implements ChatServer {
     private int port;
     private boolean alive;
     private ServerSocket serverSocket;
+    private int[] blacklist = {5001, 5002, 9999, 56046}; // Puertos bloqueados
 
     public ChatServerImpl(int port) {
         this.port = port;
@@ -43,6 +44,22 @@ public class ChatServerImpl implements ChatServer {
                 show("Servidor esperando en puerto " + port);
                 Socket socket = serverSocket.accept();
                 if (!alive) break;
+                // --- LÓGICA DE BLACKLIST ---
+            int clientPort = socket.getPort(); // Obtenemos el puerto de origen
+            boolean blocked = false;
+            for (int bPort : blacklist) {
+                if (bPort == clientPort) {
+                    blocked = true;
+                    break;
+                }
+            }
+
+            if (blocked) {
+                show("Conexión bloqueada desde el puerto origen: " + clientPort);
+                socket.close(); // Cerramos sin crear el hilo
+                continue; // Saltamos al siguiente cliente
+            }
+            // ---------------------------
                 ServerThreadForClient t = new ServerThreadForClient(socket);
                 clients.add(t);
                 t.start();
@@ -108,7 +125,8 @@ public class ChatServerImpl implements ChatServer {
                 sOutput = new ObjectOutputStream(socket.getOutputStream());
                 sInput = new ObjectInputStream(socket.getInputStream());
                 username = (String) sInput.readObject();
-                show(username + " conectado con ID " + id);
+                // Cambia la línea de 'show' por esta:
+show(username + " conectado con ID " + id + " desde el puerto " + socket.getPort());
             } catch (Exception e) {
                 show("Error en streams: " + e);
             }
