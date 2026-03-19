@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ChatPractica1" default="javadoc" basedir=".">
+    
+    <property name="src.dir" value="src/main/java"/>
+    <property name="doc.dir" value="doc"/>
+
+    <target name="clean">
+        <delete dir="${doc.dir}"/>
+    </target>
+
+    <target name="javadoc" depends="clean">
+        <mkdir dir="${doc.dir}"/>
+        <javadoc sourcepath="${src.dir}" 
+                 destdir="${doc.dir}" 
+                 author="true" 
+                 version="true" 
+                 use="true" 
+                 windowtitle="Documentación Chat 1.0 - Sistemas Distribuidos">
+            <packageset dir="${src.dir}">
+                <include name="es/ubu/lsi/**"/>
+            </packageset>
+            <doctitle><![CDATA[<h1>Práctica 1: Chat 1.0 - Sistemas Distribuidos</h1>]]></doctitle>
+            <bottom><![CDATA[<i>TuNombre patrocina esta documentación.</i>]]></bottom>
+        </javadoc>
+    </target>
+    
+</project>
