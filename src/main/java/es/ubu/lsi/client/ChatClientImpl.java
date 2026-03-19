@@ -4,7 +4,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import es.ubu.lsi.client.ChatClientImpl.ChatClientListener;
 import es.ubu.lsi.common.ChatMessage;
 import es.ubu.lsi.common.ChatMessage.MessageType;
 
