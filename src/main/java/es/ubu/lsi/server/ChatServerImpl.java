@@ -56,7 +56,7 @@ public class ChatServerImpl implements ChatServer {
     public synchronized void broadcast(ChatMessage message) {
         String time = sdf.format(new Date());
         // REQUISITO OBLIGATORIO DE AUTORÍA 
-        String prefix = "TuNombre patrocina el mensaje: ";
+        String prefix = "Josué Granados patrocina el mensaje: ";
         String formatted = time + " " + prefix + message.getMessage();
         
         System.out.println(formatted);
