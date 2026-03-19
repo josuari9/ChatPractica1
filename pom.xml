@@ -7,6 +7,13 @@
   <groupId>es.ubu.lsi</groupId>
   <artifactId>chatpractica1</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <developers>
+    <developer>
+        <id>JGH</id>
+        <name>Josué Granados</name>
+        <email>jgh1006@alu.ubu.es</email>
+    </developer>
+</developers>
 
   <name>chatpractica1</name>
   <!-- FIXME change it to the project's website -->
