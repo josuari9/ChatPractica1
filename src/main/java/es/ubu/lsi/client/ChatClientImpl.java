@@ -83,6 +83,7 @@ public class ChatClientImpl implements ChatClient {
                 client.sendMessage(new ChatMessage(0, MessageType.MESSAGE, text));
             }
         }
+        sc.close();
         client.disconnect();
     }
 

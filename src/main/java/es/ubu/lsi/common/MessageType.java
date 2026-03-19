@@ -1,11 +1,11 @@
 package es.ubu.lsi.common;
 
-import java.io.Serializable;
+
 
 /**
  * Tipos de mensajes que se manejan en el chat.
  */
-public enum MessageType implements Serializable {
+public enum MessageType  {
     /** Mensaje de texto normal. */
     MESSAGE,
     /** Mensaje para desconectar al cliente. */
